@@ -1,5 +1,11 @@
 <?php
+/*
+Modification Log: Gabrielle Mack (gmm28)
 
+*Changed 'email' field in where clause to match new db field acct_email
+
+
+*/
 class accounts extends \database\collection
 {
     protected static $modelName = 'account';
@@ -12,7 +18,7 @@ class accounts extends \database\collection
     {
 
             $tableName = get_called_class();
-            $sql = 'SELECT * FROM ' . $tableName . ' WHERE email = ?';
+            $sql = 'SELECT * FROM ' . $tableName . ' WHERE acct_email = ?';
 
          //grab the only record for find one and return as an object
             $recordsSet = self::getResults($sql, $email);

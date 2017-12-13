@@ -50,12 +50,16 @@ class accountsController extends http\controller
 
         if ($user == FALSE) {
             $user = new account();
-            $user->email = $_POST['email'];
-            $user->fname = $_POST['fname'];
-            $user->lname = $_POST['lname'];
-            $user->phone = $_POST['phone'];
-            $user->birthday = $_POST['birthday'];
-            $user->gender = $_POST['gender'];
+            $user->acct_email = $_POST['email'];
+            $user->acct_fname = $_POST['fname'];
+            $user->acct_lname = $_POST['lname'];
+            $user->acct_phone = $_POST['phone'];
+            $user->acct_birthday = $_POST['birthday'];
+            $user->acct_gender = $_POST['gender'];
+			
+			$user->acct_password = $_POST['password'];//for testing purposes
+			
+			
             //$user->password = $_POST['password'];
             //this creates the password
             //this is a mistake you can fix...
@@ -90,12 +94,12 @@ class accountsController extends http\controller
     public static function save() {
         $user = accounts::findOne($_REQUEST['id']);
 
-        $user->email = $_POST['email'];
-        $user->fname = $_POST['fname'];
-        $user->lname = $_POST['lname'];
-        $user->phone = $_POST['phone'];
-        $user->birthday = $_POST['birthday'];
-        $user->gender = $_POST['gender'];
+        $user->acct_email = $_POST['acct_email'];
+            $user->acct_fname = $_POST['acct_fname'];
+            $user->acct_lname = $_POST['acct_lname'];
+            $user->acct_phone = $_POST['acct_phone'];
+            $user->acct_birthday = $_POST['acct_birthday'];
+            $user->acct_gender = $_POST['acct_gender'];
         $user->save();
         header("Location: index.php?page=accounts&action=all");
 
