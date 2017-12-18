@@ -10,7 +10,7 @@ class todos extends database\collection
 
 
         $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName . ' WHERE ownerid = ?';
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE acct_id = ?';
 
 
         //grab the only record for find one and return as an object

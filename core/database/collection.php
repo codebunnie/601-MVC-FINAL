@@ -49,7 +49,7 @@ abstract class collection
     static public function findOne($id)
     {
         $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName . ' WHERE id = ?';
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE acct_id = ?';
         //grab the only record for find one and return as an object
         $recordsSet = self::getResults($sql, $id);
 
