@@ -89,9 +89,18 @@ class routes
         
 		
 		
-		//This goes in the login form action method
-        //GET METHOD index.php?page=accounts&action=login
-
+		//Instead of going to all accounts, go to all tasks. 
+		//GET METHOD index.php?page=all_tasks&action=all
+		
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'all';
+        $route->page = 'all_tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'all';
+        $routes[] = $route;
+		
+		
 
         $route = new route();
         $route->http_method = 'POST';
@@ -163,6 +172,24 @@ class routes
         $route->method = 'show';
         $routes[] = $route;
 		
+		// Update task
+		$route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'edit';
+        $route->page = 'edit_task';
+        $route->controller = 'tasksController';
+        $route->method = 'edit';
+        $routes[] = $route;
+		
+		
+		//Update Tasks (Again)
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'save';
+        $route->page = 'task';
+        $route->controller = 'tasksController';
+        $route->method = 'store';
+        $routes[] = $route;
 		
 
 

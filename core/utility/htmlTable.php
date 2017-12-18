@@ -54,6 +54,28 @@ class htmlTable
         $tableGen .= '</tr></table><hr>';
         return $tableGen;
     }
+	
+	 public static function generateEditableForm($innerArray)
+    {
+        $tableGen = '<table border="1" cellpadding="10"><tr>';
+
+        $tableGen .= '<tr>';
+        foreach ($innerArray as $innerRow => $value) {
+            $tableGen .= '<th>' . $innerRow . '</th>';
+        }
+        $tableGen .= '</tr>';
+
+        foreach ($innerArray as $value) {
+            $tableGen .= '<td><input value="' . $value . '" </input></td>';
+        }
+
+        $tableGen .= '</tr></table><hr>';
+        return $tableGen;
+    }
+	
+	
+	
+	
 }
 
 ?>
