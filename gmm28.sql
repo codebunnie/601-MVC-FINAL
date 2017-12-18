@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 14, 2017 at 11:23 PM
+-- Generation Time: Dec 18, 2017 at 03:36 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -41,20 +41,94 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `acct_type_id` int(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`acct_id`),
   KEY `acct_type_id` (`acct_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `accounts`
---
-
-TRUNCATE TABLE `accounts`;
 --
 -- Dumping data for table `accounts`
 --
 
 INSERT INTO `accounts` (`acct_id`, `acct_email`, `acct_fname`, `acct_lname`, `acct_phone`, `acct_birthday`, `acct_gender`, `acct_password`, `acct_type_id`) VALUES
-(1, 'admin@gmail.com', 'Admin', 'Admin_User', '978-859-8798', '2017-12-12', 'FEMALE', 'password', 2),
-(2, 'user@gmail.com', 'USER', 'User_User', '549-785-8745', '2017-08-12', 'MALE', 'password1', 1);
+(1, 'admin@gmail.com', 'Admin', 'Admin_User', '978-859-8798', '2017-12-12', 'MALE', 'password', 1),
+(2, 'user@gmail.com', 'USER', 'User_User', '549-785-8745', '2017-08-12', 'MALE', 'password1', 1),
+(3, 'rshtrhtyra@ghtr.co,', 'trh5', 'rhtshtryh', '98778977998', '2017-01-06', 'MALE', '$2y$10$B5AXep4IB.qsuJT7.q5Fgunh3eL2rLikIdws6O2TsqtRg8GL00knC', 1),
+(4, 'TEST@TEST.COM', 'TESTER3', 'MYTEST', '988-897-8756', '2017-02-26', 'MALE', '$2y$10$bd4n3V6NxsvyZFAgBsHLzeR6JGcKlASjPQOfQzhYQ3kHVIxjfZxzu', 1),
+(5, 'JIOSFHEOWI@9493.COM', 'TEST', 'TESTER2', '978998547', '2017-06-01', 'FEMALE', '$2y$10$QNGTh8/tml.mcna7CkRQWenuuP9pqFooAqxLIPswa5USzGduuWyRq', 1),
+(6, 'tested@gmail.com', 'Tester2', 'hiuewyu', '485787678', '2017-01-21', 'FEMALE', '$2y$10$BKh10cSSm4DDtV349RuVIOk/eN1j/FnNouQIM4Kg3xZYKnQhPVbSu', 1),
+(7, 'onetest@gmail.com', 'gtrkljerojf', '39rhjhksh', '4564564587', '2017-05-12', 'FEMALE', '$2y$10$wMAqDSCGnJCntbr4QsM7k.mScxmODsvH1.XcUdHNZFuTLLwDJZTfi', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account_type`
+--
+
+DROP TABLE IF EXISTS `account_type`;
+CREATE TABLE IF NOT EXISTS `account_type` (
+  `acct_type_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `acct_type_desc` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`acct_type_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `account_type`
+--
+
+INSERT INTO `account_type` (`acct_type_id`, `acct_type_desc`) VALUES
+(1, 'USER'),
+(2, 'ADMINISTRATOR');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `todos`
+--
+
+DROP TABLE IF EXISTS `todos`;
+CREATE TABLE IF NOT EXISTS `todos` (
+  `todo_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `acct_id` int(11) UNSIGNED DEFAULT NULL,
+  `todo_create_date` datetime DEFAULT NULL,
+  `todo_end_date` datetime DEFAULT NULL,
+  `todo_due_date` datetime DEFAULT NULL,
+  `todo_desc` varchar(60) DEFAULT NULL,
+  `todo_status_id` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`todo_id`),
+  KEY `acct_id` (`acct_id`),
+  KEY `todo_status_id` (`todo_status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `todos`
+--
+
+INSERT INTO `todos` (`todo_id`, `acct_id`, `todo_create_date`, `todo_end_date`, `todo_due_date`, `todo_desc`, `todo_status_id`) VALUES
+(1, 1, '2017-01-01 00:00:00', '2017-01-31 00:00:00', '2017-02-01 00:00:00', 'this is a desc for admn', 3),
+(2, 2, '2017-12-01 00:00:00', '2017-12-31 00:00:00', '2018-01-11 00:00:00', 'This is another todo', 2),
+(3, 1, '2018-01-01 00:00:00', '2018-01-31 00:00:00', '2018-02-01 00:00:00', 'this is a desc for admn', 1),
+(4, 2, '2018-12-01 00:00:00', '2018-12-31 00:00:00', '2018-01-11 00:00:00', 'This is another todo', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `todo_status`
+--
+
+DROP TABLE IF EXISTS `todo_status`;
+CREATE TABLE IF NOT EXISTS `todo_status` (
+  `todo_status_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `todo_status_desc` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`todo_status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `todo_status`
+--
+
+INSERT INTO `todo_status` (`todo_status_id`, `todo_status_desc`) VALUES
+(1, 'COMPLETED'),
+(2, 'PENDING'),
+(3, 'IN PROCESS'),
+(4, 'REASSIGNED');
 
 --
 -- Constraints for dumped tables
@@ -65,6 +139,13 @@ INSERT INTO `accounts` (`acct_id`, `acct_email`, `acct_fname`, `acct_lname`, `ac
 --
 ALTER TABLE `accounts`
   ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`acct_type_id`) REFERENCES `account_type` (`acct_type_id`);
+
+--
+-- Constraints for table `todos`
+--
+ALTER TABLE `todos`
+  ADD CONSTRAINT `todos_ibfk_1` FOREIGN KEY (`acct_id`) REFERENCES `accounts` (`acct_id`),
+  ADD CONSTRAINT `todos_ibfk_2` FOREIGN KEY (`todo_status_id`) REFERENCES `todo_status` (`todo_status_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
