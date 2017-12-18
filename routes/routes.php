@@ -145,6 +145,19 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'store';
         $routes[] = $route;
+		
+		//Added ROUTES
+		
+		//Route to show user tasks
+		 $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'show';
+        $route->page = 'user_tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'show';
+        $routes[] = $route;
+		
+		
 
 
         return $routes;

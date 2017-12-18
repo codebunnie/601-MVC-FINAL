@@ -18,6 +18,10 @@ abstract class collection
         $sql = 'SELECT * FROM ' . $tableName;
         return self::getResults($sql);
     }
+	
+	
+	
+	
 
     //you can use this to run other queries in on classes that extend the collection class because this is protected
     protected static function getResults($sql, $parameters = null) {
