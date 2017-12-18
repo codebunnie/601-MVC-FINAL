@@ -15,7 +15,7 @@ class accountsController extends http\controller
     //to call the show function the url is index.php?page=task&action=show
     public static function show()
     {
-        $record = accounts::findOne($_REQUEST['acct_id']);
+        $record = accounts::findOne($_REQUEST['id']);
         self::getTemplate('show_account', $record);
     }
 
@@ -50,6 +50,7 @@ class accountsController extends http\controller
 
         if ($user == FALSE) {
             $user = new account();
+			$user->acct_id = $_POST['acct_id'];
             $user->acct_email = $_POST['acct_email'];
             $user->acct_fname = $_POST['acct_fname'];
             $user->acct_lname = $_POST['acct_lname'];
@@ -108,7 +109,7 @@ class accountsController extends http\controller
 
     public static function delete() {
 
-        $record = accounts::findOne($_REQUEST['acct_id']);
+        $record = accounts::findOne($_REQUEST['id']);
         $record->delete();
         header("Location: index.php?page=accounts&action=all");
     }

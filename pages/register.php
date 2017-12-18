@@ -19,6 +19,7 @@
 
 
 <form action="index.php?page=accounts&action=register" method="post">
+<input type="hidden" name="acct_id" value="">
     First name: <input type="text" name="acct_fname"><br>
     Last name: <input type="text" name="acct_lname"><br>
     Email: <input type="text" name="acct_email"><br>

@@ -63,9 +63,11 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'all';
         $routes[] = $route;
-        //GET METHOD index.php?page=accounts&action=all
+        
+		
+		
+		//GET METHOD index.php?page=accounts&action=all
 //https://web.njit.edu/~kwilliam/mvc/index.php?page=accounts&action=all
-
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'all';
@@ -73,8 +75,9 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'all';
         $routes[] = $route;
+		
+		
         //GET METHOD index.php?page=accounts&action=show
-
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'show';
@@ -83,7 +86,10 @@ class routes
         $route->method = 'show';
         $routes[] = $route;
 
-        //This goes in the login form action method
+        
+		
+		
+		//This goes in the login form action method
         //GET METHOD index.php?page=accounts&action=login
 
 
@@ -148,12 +154,12 @@ class routes
 		
 		//Added ROUTES
 		
-		//Route to show user tasks
+		//Route to update user account
 		 $route = new route();
-        $route->http_method = 'GET';
+        $route->http_method = 'post';
         $route->action = 'show';
-        $route->page = 'user_tasks';
-        $route->controller = 'tasksController';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
         $route->method = 'show';
         $routes[] = $route;
 		
