@@ -2,14 +2,15 @@
 
 final class account extends \database\model
 {
-    public $id;
-    public $email;
-    public $fname;
-    public $lname;
-    public $phone;
-    public $birthday;
-    public $gender;
-    public $password;
+    public $acct_id;
+    public $acct_email;
+    public $acct_fname;
+    public $acct_lname;
+    public $acct_phone;
+    public $acct_birthday;
+    public $acct_gender;
+    public $acct_password;
+	public $acct_type_id;
     protected static $modelName = 'account';
 
     public static function getTablename()
@@ -44,7 +45,7 @@ final class account extends \database\model
 
     public function checkPassword($LoginPassword) {
 
-        return password_verify($LoginPassword, $this->password);
+        return password_verify($LoginPassword, $this->acct_password);
 
 
     }
@@ -53,8 +54,8 @@ final class account extends \database\model
     public function validate()
     {
         $valid = TRUE;
-        echo 'myemail: ' . $this->email;
-        if($this->email == '') {
+        echo 'myemail: ' . $this->acct_email;
+        if($this->acct_email == '') {
             $valid = FALSE;
             echo 'nothing in email';
         }

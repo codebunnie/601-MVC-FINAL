@@ -15,7 +15,7 @@ class accountsController extends http\controller
     //to call the show function the url is index.php?page=task&action=show
     public static function show()
     {
-        $record = accounts::findOne($_REQUEST['id']);
+        $record = accounts::findOne($_REQUEST['acct_id']);
         self::getTemplate('show_account', $record);
     }
 
@@ -45,26 +45,26 @@ class accountsController extends http\controller
     public static function store()
 
     {
-        $user = accounts::findUserbyEmail($_REQUEST['email']);
+        $user = accounts::findUserbyEmail($_REQUEST['acct_email']);
 
 
         if ($user == FALSE) {
             $user = new account();
-            $user->acct_email = $_POST['email'];
-            $user->acct_fname = $_POST['fname'];
-            $user->acct_lname = $_POST['lname'];
-            $user->acct_phone = $_POST['phone'];
-            $user->acct_birthday = $_POST['birthday'];
-            $user->acct_gender = $_POST['gender'];
-			
-			$user->acct_password = $_POST['password'];//for testing purposes
+            $user->acct_email = $_POST['acct_email'];
+            $user->acct_fname = $_POST['acct_fname'];
+            $user->acct_lname = $_POST['acct_lname'];
+            $user->acct_phone = $_POST['acct_phone'];
+            $user->acct_birthday = $_POST['acct_birthday'];
+            $user->acct_gender = $_POST['acct_gender'];
+			$user->acct_type_id = $_POST['acct_type_id'];			
+			$user->acct_password = $_POST['acct_password'];//for testing purposes
 			
 			
             //$user->password = $_POST['password'];
             //this creates the password
             //this is a mistake you can fix...
             //Turn the set password function into a static method on a utility class.
-            $user->password = $user->setPassword($_POST['password']);
+            $user->acct_password = $user->setPassword($_POST['acct_password']);
             $user->save();
 
             //you may want to send the person to a
@@ -85,21 +85,22 @@ class accountsController extends http\controller
 
     public static function edit()
     {
-        $record = accounts::findOne($_REQUEST['id']);
+        $record = accounts::findOne($_REQUEST['acct_id']);
 
         self::getTemplate('edit_account', $record);
 
     }
 //this is used to save the update form data
     public static function save() {
-        $user = accounts::findOne($_REQUEST['id']);
+        $user = accounts::findOne($_REQUEST['acct_id']);
 
         $user->acct_email = $_POST['acct_email'];
             $user->acct_fname = $_POST['acct_fname'];
             $user->acct_lname = $_POST['acct_lname'];
             $user->acct_phone = $_POST['acct_phone'];
             $user->acct_birthday = $_POST['acct_birthday'];
-            $user->acct_gender = $_POST['acct_gender'];
+            $user->acct_gender = $_POST['acct_gender'];			
+			$user->acct_type_id = $_POST['acct_type_id'];
         $user->save();
         header("Location: index.php?page=accounts&action=all");
 
@@ -107,7 +108,7 @@ class accountsController extends http\controller
 
     public static function delete() {
 
-        $record = accounts::findOne($_REQUEST['id']);
+        $record = accounts::findOne($_REQUEST['acct_id']);
         $record->delete();
         header("Location: index.php?page=accounts&action=all");
     }
@@ -122,14 +123,14 @@ class accountsController extends http\controller
         //after you login you can use the header function to forward the user to a page that displays their tasks.
         //        $record = accounts::findUser($_POST['email']);
 
-        $user = accounts::findUserbyEmail($_REQUEST['email']);
+        $user = accounts::findUserbyEmail($_REQUEST['acct_email']);
 
 
         if ($user == FALSE) {
             echo 'user not found';
         } else {
 
-            if($user->checkPassword($_POST['password']) == TRUE) {
+            if($user->checkPassword($_POST['acct_password']) == TRUE) {
 
                 echo 'login';
 

@@ -15,7 +15,7 @@ abstract class model
         }
 
 
-        if ($this->id != '') {
+        if ($this->acct_id != '') {
             $sql = $this->update();
         } else {
             $sql = $this->insert();
@@ -27,7 +27,7 @@ abstract class model
 
         if ($INSERT == TRUE) {
 
-            unset($array['id']);
+            unset($array['acct_id']);
 
         }
 
@@ -37,12 +37,12 @@ abstract class model
         $statement->execute();
         if ($INSERT == TRUE) {
 
-            $this->id = $db->lastInsertId();
+            $this->acct_id = $db->lastInsertId();
 
         }
 
 
-        return $this->id;
+        return $this->acct_id;
         }
 
 
@@ -53,7 +53,7 @@ abstract class model
         $modelName = static::$modelName;
         $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
-        unset($array['id']);
+        unset($array['acct_id']);
         $columnString = implode(',', array_flip($array));
         $valueString = ':' . implode(',:', array_flip($array));
         $sql = 'INSERT INTO ' . $tableName . ' (' . $columnString . ') VALUES (' . $valueString . ')';
@@ -80,7 +80,7 @@ abstract class model
                 $comma = ", ";
             }
         }
-        $sql .= ' WHERE id=' . $this->id;
+        $sql .= ' WHERE acct_id=' . $this->acct_id;
         return $sql;
 
     }
@@ -90,7 +90,7 @@ abstract class model
         $db = dbConn::getConnection();
         $modelName = static::$modelName;
         $tableName = $modelName::getTablename();
-        $sql = 'DELETE FROM ' . $tableName . ' WHERE id=' . $this->id;
+        $sql = 'DELETE FROM ' . $tableName . ' WHERE acct_id=' . $this->acct_id;
         $statement = $db->prepare($sql);
         $statement->execute();
     }
