@@ -152,6 +152,7 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'register';
         $routes[] = $route;
+		
         //this handles the reg post to create the user
         $route = new route();
         $route->http_method = 'POST';
