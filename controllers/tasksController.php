@@ -57,12 +57,19 @@ class tasksController extends http\controller
     }
 
     //this would be for the post for sending the task edit form
+	//need to grab the form vals 
+	
     public static function store()
     {
 
-
         $record = todos::findOne($_REQUEST['id']);
-        $record->body = $_REQUEST['body'];
+        $record->body = $_REQUEST['todo_create_date'];
+		$record->body = $_REQUEST['todo_end_date'];
+		$record->body = $_REQUEST['todo_desc'];
+		$record->body = $_REQUEST['todo_status_id'];
+			
+		
+		
         $record->save();
         print_r($_POST);
 

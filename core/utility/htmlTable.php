@@ -55,7 +55,9 @@ class htmlTable
         return $tableGen;
     }
 	
-	 public static function generateEditableForm($innerArray)
+	
+	//form for editing/updating tasks
+	 public static function generateEditableForm($innerArray) 
     {
         $tableGen = '<table border="1" cellpadding="10"><tr>';
 
@@ -64,9 +66,9 @@ class htmlTable
             $tableGen .= '<th>' . $innerRow . '</th>';
         }
         $tableGen .= '</tr>';
-
-        foreach ($innerArray as $value) {
-            $tableGen .= '<td><input value="' . $value . '" </input></td>';
+	//added array link to loop individual input fields 
+        foreach ($innerArray as $innerRow => $value) {
+            $tableGen .= '<td><input name="'. $innerRow .'" value="' . $value . '" </input></td>';
         }
 
         $tableGen .= '</tr></table><hr>';
