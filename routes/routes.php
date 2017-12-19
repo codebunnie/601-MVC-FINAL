@@ -194,8 +194,11 @@ class routes
         $route->method = 'store';
         $routes[] = $route;
 		
+		
+		
+		
 		//User Tasks
-		  $route = new route();
+		$route = new route();
         $route->http_method = 'POST';
         $route->action = 'all';
         $route->page = 'user_tasks';
@@ -209,7 +212,7 @@ class routes
         $route->action = 'all';
         $route->page = 'user_tasks';
         $route->controller = 'tasksController';
-        $route->method = 'routeChecker';
+        $route->method = 'show';
         $routes[] = $route;
 
 

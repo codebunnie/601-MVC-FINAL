@@ -22,7 +22,7 @@ class tasksController extends http\controller
 	
     public static function show()
     {
-        $record = todos::findOne($_REQUEST['id']);
+        $record = todos::findOne($_REQUEST['acct_id']);
         self::getTemplate('show_task', $record);
     }
 
