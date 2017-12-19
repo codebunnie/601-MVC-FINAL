@@ -77,20 +77,35 @@ echo "<br>HIT CORE/MODEL UPDATE";
         $comma = " ";
 		
 		//TShooting
+		print_r($array['acct_id']);
+		
 		echo '<BR><BR>PASSED ARRAY<BR><BR>';
 		 foreach ($array as $key => $value) {
 			 echo 'Key:'.$key.'   Value: '.$value.'</br>';
+			 
 		 }
 		
 		
         $sql = 'UPDATE ' . $tableName . ' SET ';
-        foreach ($array as $key => $value) {
+      //  foreach ($array as $key => $value) {
             if (!empty($value)) {
-                $sql .= $comma . $key . ' = "' . $value . '"';
-                $comma = ", ";
+              //  $sql .= $comma . $key . ' = "' . $value . '"';
+				 $comma = ", ";
+				$sql .= 			'todo_create_date'	. ' = "' . $array['todo_create_date'] 	. '"'.
+						$comma .	'todo_end_date' 	. ' = "' . $array['todo_end_date'] 		. '"'.
+						$comma .	'todo_due_date' 	. ' = "' . $array['todo_due_date'] 		. '"'.
+						$comma .	'todo_desc' 		. ' = "' . $array['todo_desc'] 			. '"'.
+						$comma .	'todo_status_id'	. ' = "' . $array['todo_status_id']		. '"';
+				
+				
+				
+				
+				
+				
+               
             }
-        }
-        $sql .= ' WHERE acct_id=' . $this->acct_id;
+       // }
+        $sql .= ' WHERE todo_id=' . $this->todo_id;
 		echo '<br> SQL PRINTOUT <BR>'.$sql.'<BR>';
         return $sql;
 
