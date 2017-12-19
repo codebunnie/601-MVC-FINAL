@@ -34,8 +34,10 @@ class tasksController extends http\controller
 		echo 'Checking Record';
 		print_r($record);
 		
-		
-       self::getTemplate('show_task', $record);
+		//if (!$record)
+		//	self::getTemplate('create_task', $record);
+	//	else
+			self::getTemplate('show_task', $record);
     }
 
     //to call the show function the url is index.php?page=task&action=list_task
@@ -65,6 +67,13 @@ class tasksController extends http\controller
     public static function create()
     {
         print_r($_POST);
+		$record->acct_id = $_REQUEST['acct_id'];
+		$record->todo_create_date = $_REQUEST['todo_create_date'];
+		$record->todo_end_date = $_REQUEST['todo_end_date'];
+		$record->todo_desc = $_REQUEST['todo_desc'];
+		$record->todo_status_id = $_REQUEST['todo_status_id'];
+		$record->save();
+		
     }
 
     //this is the function to view edit record form

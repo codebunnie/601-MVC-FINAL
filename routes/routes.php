@@ -227,6 +227,24 @@ class routes
         $routes[] = $route;
 
 
+		 //this handles the reg post to create the user
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'new';
+        $route->page = 'show_task';
+        $route->controller = 'tasksController';
+        $route->method = 'create';
+        $routes[] = $route;
+		
+		$route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'new';
+        $route->page = 'show_task';
+        $route->controller = 'tasksController';
+        $route->method = 'create';
+        $routes[] = $route;
+		
+		
 
         return $routes;
     }
