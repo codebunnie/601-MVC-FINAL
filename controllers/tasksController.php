@@ -31,10 +31,11 @@ class tasksController extends http\controller
 		session_start();
 		$acct_id = $_SESSION['userID'];										
         $record = todos::findOne($acct_id);
+		echo 'Checking Record';
+		print_r($record);
 		
 		
-		
-        self::getTemplate('show_task', $record);
+       self::getTemplate('show_task', $record);
     }
 
     //to call the show function the url is index.php?page=task&action=list_task
