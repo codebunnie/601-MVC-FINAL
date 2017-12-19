@@ -16,7 +16,7 @@ abstract class model
 		$INSERT = "";
 
         if ($this->acct_id != '') {
-			echo 'HIT UPDATE';
+			//echo 'HIT UPDATE';
             $sql = $this->update();
         } else {
 			echo 'HIT INSERT';

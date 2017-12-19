@@ -71,7 +71,7 @@ class tasksController extends http\controller
 		
 		
         $record->save();
-        print_r($_POST);
+       // print_r($_POST);
 
     }
 
