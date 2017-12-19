@@ -63,10 +63,10 @@ class tasksController extends http\controller
     {
 
         $record = todos::findOne($_REQUEST['id']);
-        $record->body = $_REQUEST['todo_create_date'];
-		$record->body = $_REQUEST['todo_end_date'];
-		$record->body = $_REQUEST['todo_desc'];
-		$record->body = $_REQUEST['todo_status_id'];
+        $record->todo_create_date = $_REQUEST['todo_create_date'];
+		$record->todo_end_date = $_REQUEST['todo_end_date'];
+		$record->todo_desc = $_REQUEST['todo_desc'];
+		$record->todo_status_id = $_REQUEST['todo_status_id'];
 			
 		
 		
@@ -78,7 +78,10 @@ class tasksController extends http\controller
     public static function save() {
         session_start();
         $task = new todo();
-        $task->body = $_POST['body'];
+        $task->todo_create_date = $_REQUEST['todo_create_date'];
+		$task->todo_end_date = $_REQUEST['todo_end_date'];
+		$task->todo_desc = $_REQUEST['todo_desc'];
+		$task->todo_status_id = $_REQUEST['todo_status_id'];
         $task->ownerid = $_SESSION['userID'];
         $task->save();
 

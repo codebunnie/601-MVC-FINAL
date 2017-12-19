@@ -13,11 +13,13 @@ abstract class model
             echo 'failed validation';
             exit;
         }
-
+		$INSERT = "";
 
         if ($this->acct_id != '') {
+			echo 'HIT UPDATE';
             $sql = $this->update();
         } else {
+			echo 'HIT INSERT';
             $sql = $this->insert();
             $INSERT = TRUE;
         }
@@ -67,12 +69,20 @@ abstract class model
 
     private function update()
     {
-
+echo "<br>HIT CORE/MODEL UPDATE";
         $modelName = static::$modelName;
         $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
 
         $comma = " ";
+		
+		//TShooting
+		echo '<BR><BR>PASSED ARRAY<BR><BR>';
+		 foreach ($array as $key => $value) {
+			 echo 'Key:'.$key.'   Value: '.$value.'</br>';
+		 }
+		
+		
         $sql = 'UPDATE ' . $tableName . ' SET ';
         foreach ($array as $key => $value) {
             if (!empty($value)) {
@@ -81,6 +91,7 @@ abstract class model
             }
         }
         $sql .= ' WHERE acct_id=' . $this->acct_id;
+		echo '<br> SQL PRINTOUT <BR>'.$sql.'<BR>';
         return $sql;
 
     }
