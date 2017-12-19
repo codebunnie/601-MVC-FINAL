@@ -144,6 +144,8 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'save';
         $routes[] = $route;
+		
+		
         //this is the route for the reg form
         $route = new route();
         $route->http_method = 'GET';
@@ -192,6 +194,24 @@ class routes
         $route->method = 'store';
         $routes[] = $route;
 		
+		//User Tasks
+		  $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'all';
+        $route->page = 'user_tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'routeChecker';
+        $routes[] = $route;
+		
+		//User Tasks
+		  $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'all';
+        $route->page = 'user_tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'routeChecker';
+        $routes[] = $route;
+
 
 
         return $routes;

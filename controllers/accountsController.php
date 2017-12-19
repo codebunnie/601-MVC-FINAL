@@ -10,6 +10,12 @@
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class accountsController extends http\controller
 {
+	public static function routeChecker()
+	{
+		echo 'HIT ACCOUNTS CONTROLLER ROUTER';
+	}
+	
+	
 
     //each method in the controller is named an action.
     //to call the show function the url is index.php?page=task&action=show
@@ -73,7 +79,7 @@ class accountsController extends http\controller
             // and then send them to the task list page and a link to create tasks
 			
 			
-            header("Location: index.php?page=tasks&action=all");
+            header("Location: index.php?page=user_tasks&action=all");
 
         } else {
             //You can make a template for errors called error.php

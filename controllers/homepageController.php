@@ -11,6 +11,13 @@
 
 class homepageController extends http\controller
 {
+	public static function routeChecker()
+	{
+		echo 'HIT HOMEPAGE CONTROLLER ROUTER';
+	}
+	
+	
+	
 
     public static function show()
     {
