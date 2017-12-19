@@ -69,25 +69,29 @@ abstract class model
 
     private function update()
     {
-echo "<br>HIT CORE/MODEL UPDATE";
-        $modelName = static::$modelName;
+		//echo "<br>HIT CORE/MODEL UPDATE";
+        
+		$modelName = static::$modelName;
         $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
 
         $comma = " ";
 		
 		//TShooting
-		print_r($array['acct_id']);
+	//	print_r($array['acct_id']);
 		
-		echo '<BR><BR>PASSED ARRAY<BR><BR>';
-		 foreach ($array as $key => $value) {
-			 echo 'Key:'.$key.'   Value: '.$value.'</br>';
-			 
-		 }
+	//	echo '<BR><BR>PASSED ARRAY<BR><BR>';
 		
+		
+		foreach ($array as $key => $value) {
+		//	 echo 'Key:'.$key.'   Value: '.$value.'</br>';			 
+		};
+		
+		//Had to modify this query as passing acct_id and todo_id into the update caused a referential integ
 		
         $sql = 'UPDATE ' . $tableName . ' SET ';
-      //  foreach ($array as $key => $value) {
+		
+		//  foreach ($array as $key => $value) {
             if (!empty($value)) {
               //  $sql .= $comma . $key . ' = "' . $value . '"';
 				 $comma = ", ";
@@ -106,7 +110,7 @@ echo "<br>HIT CORE/MODEL UPDATE";
             }
        // }
         $sql .= ' WHERE todo_id=' . $this->todo_id;
-		echo '<br> SQL PRINTOUT <BR>'.$sql.'<BR>';
+	//	echo '<br> SQL PRINTOUT <BR>'.$sql.'<BR>';
         return $sql;
 
     }
