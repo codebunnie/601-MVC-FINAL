@@ -15,14 +15,25 @@ class tasksController extends http\controller
 	
 	public static function routeChecker()
 	{
+		//Troubleshooting used to track routes and session vars
 		echo 'HIT TASK CONTROLLER ROUTER';
+		echo "<pre>";
+		print_r($_SESSION);
+		echo "</pre>";
 	}
 	
 	
 	
     public static function show()
     {
-        $record = todos::findOne($_REQUEST['acct_id']);
+				
+		//took a year and a day to figure this out
+		session_start();
+		$acct_id = $_SESSION['userID'];										
+        $record = todos::findOne($acct_id);
+		
+		
+		
         self::getTemplate('show_task', $record);
     }
 

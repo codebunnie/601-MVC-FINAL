@@ -16,7 +16,8 @@ class routes
         //You should improve this function by making functions to create routes in a factory. I will look for this when grading
 
         //I also use object for the route because it has data and it's easier to access.
-        $route = new route();
+       
+	 /*  $route = new route();
         //this is the index.php route for GET
         //Specify the request method
         $route->http_method = 'GET';
@@ -30,17 +31,27 @@ class routes
         $route->method = 'show';
         //this adds the route to the routes array.
         $routes[] = $route;
+		*/
 
-        //this is the index.php route for POST
-
-        //This is an examole of the post for index
+		
+		//INDEX ROUTES
         $route = new route();
+        $route->http_method = 'GET';
+        $route->page = 'homepage';
+        $route->action = 'show';
+        $route->controller = 'homepageController';
+        $route->method = 'show';
+        $routes[] = $route;
+
+
+	    $route = new route();
         $route->http_method = 'POST';
         $route->action = 'create';
         $route->page = 'homepage';
         $route->controller = 'homepageController';
         $route->method = 'create';
         $routes[] = $route;
+		
 
         //This is an examole of the post for tasks to show a task
         //GET METHOD index.php?page=tasks&action=show
@@ -203,11 +214,11 @@ class routes
         $route->action = 'all';
         $route->page = 'user_tasks';
         $route->controller = 'tasksController';
-        $route->method = 'routeChecker';
+        $route->method = 'show';
         $routes[] = $route;
 		
 		//User Tasks
-		  $route = new route();
+		$route = new route();
         $route->http_method = 'GET';
         $route->action = 'all';
         $route->page = 'user_tasks';

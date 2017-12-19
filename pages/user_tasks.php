@@ -5,7 +5,7 @@
   		<div class="col-sm-10">
   			<h1>My Tasks</h1>
   			
-  			
+  			<?php print_r($_SESSION); ?>
   			<p> <?php print utility\htmlTable::genarateTableFromMultiArray($data); ?></p>
   		</div>	
   	</div>

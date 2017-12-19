@@ -145,10 +145,16 @@ class accountsController extends http\controller
 
                 session_start();
                 $_SESSION["userID"] = $user->acct_id;
-				header("Location: index.php?page=all_tasks&action=all");
+				$_REQUEST["id"] = $_SESSION["userID"];
+				 echo 'SESSION VALUE: <BR>';
+				 print_r($_SESSION);
+				 echo '<br> REQUEST VALUE: <BR>';
+				 print_r($_REQUEST);
+				
+				header("Location: index.php?page=user_tasks&action=all");
 
                 //forward the user to the show all todos page
-                print_r($_SESSION);
+               
             } else {
                 echo 'password does not match';
             }
